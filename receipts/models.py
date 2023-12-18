@@ -10,6 +10,9 @@ class ExpenseCategory(models.Model):
         on_delete = models.CASCADE,
     )
 
+    def __str__(self):
+        return self.name
+
 class Account(models.Model):
     name = models.CharField(max_length=100)
     number = models.CharField(max_length=20)
@@ -19,6 +22,8 @@ class Account(models.Model):
         on_delete = models.CASCADE,
     )
 
+    def __str__(self):
+        return self.time
 class Receipt(models.Model):
     vendor = models.CharField(max_length=200)
     total = models.DecimalField(
@@ -42,6 +47,7 @@ class Receipt(models.Model):
     )
     account = models.ForeignKey(
         Account,
+        related_name = "receipts",
         on_delete=models.CASCADE,
         null=True,
     )
