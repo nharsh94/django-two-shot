@@ -22,8 +22,8 @@ def redirect_to_receipts(request):
     return redirect('home')
 
 urlpatterns = [
-    path("", redirect_to_receipts, name="home_page"),
+    path("", redirect_to_receipts, name="redirect_to_receipts"),
     path("admin/", admin.site.urls),
-    path("", include("receipts.urls")),
+    path("receipts/", include("receipts.urls")),
     path("accounts/", include("accounts.urls")),
 ]

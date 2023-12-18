@@ -42,7 +42,6 @@ class Receipt(models.Model):
     )
     account = models.ForeignKey(
         Account,
-        related_name = "receipts",
         on_delete=models.CASCADE,
         null=True,
     )
