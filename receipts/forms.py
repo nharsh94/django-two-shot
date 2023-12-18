@@ -18,3 +18,20 @@ class ReceiptForm(ModelForm):
         if user:
             self.fields['category'].queryset = ExpenseCategory.objects.filter(owner=user)
             self.fields['account'].queryset = Account.objects.filter(owner=user)
+
+class CreateExpenseCategoryForm(ModelForm):
+
+    class Meta:
+        model = ExpenseCategory
+        fields = (
+            "name",
+        )
+
+class CreateAccountForm(ModelForm):
+
+    class Meta:
+        model = Account
+        fields = (
+            "name",
+            "number",
+            )
