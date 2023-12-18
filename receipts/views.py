@@ -67,12 +67,13 @@ def create_category(request):
 @login_required
 def create_account(request):
     if request.method == "POST":
-        form = CreateAccountForm(request.post)
+        form = CreateAccountForm(request.POST)
 
         if form.is_valid():
             account = form.save(False)
             account.owner = request.user
             account.save()
+            return redirect("accounts_list")
 
     else:
         form = CreateAccountForm()
@@ -80,4 +81,4 @@ def create_account(request):
     context = {
         "form": form,
     }
-    return render(request, "accounts/create/create_account.html", context)
+    return render(request, "receipts/accounts/create_account.html", context)
